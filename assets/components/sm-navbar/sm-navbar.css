@@ -1,0 +1,31 @@
+:host{
+  height: 100%;
+}
+.body{
+  background-color: #3E3931;
+  padding: var(--paddingTiny);
+  height: 100%;
+  -webkit-transition: width 0.5s ease;
+  box-sizing: border-box;
+}
+paper-icon-button{
+  color: white;
+}
+.menuItem{
+  padding: var(--paddingSmall);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  color: var(--textDisabled);
+}
+.menuItem:hover{
+  color:white;
+  cursor:pointer;
+}
+.menuItem i{
+  margin-right: var(--paddingSmall);
+}
+.menuBody{
+  -webkit-transition: opacity 0.5s ease;
+  opacity: 0;
+}

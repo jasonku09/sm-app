@@ -1,0 +1,24 @@
+paper-material{
+  background-color: white;
+  border-radius: var(--borderRadiusSmall);
+  padding: var(--paddingSmall);
+  width: 220px;
+}
+i{
+  display:inline-block;
+  margin-right: var(--marginMedium);
+}
+.appointment-item{
+  padding: var(--paddingSmall);
+  font-size: var(--fontSizeSmall);
+  color: grey;
+  display:flex;
+  align-items: center;
+}
+.header{
+  font-weight: 600;
+  color: black;
+}
+.title{
+  font-size: var(--fontSizeMedium);
+}

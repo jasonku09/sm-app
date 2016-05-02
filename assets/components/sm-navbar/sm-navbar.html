@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="sm-navbar">
+  <link rel="import" type="css" href="sm-navbar.css" />
+  <template>
+    <div class="body">
+      <paper-icon-button icon="menu" on-tap="toggleOpen"></paper-icon-button>
+      <div class="menuBody">
+        <template is="dom-repeat" items="[[menuItems]]">
+          <div class$="menuItem {{isActive(item)}}">
+            <i class$="{{getIconClass(item.icon)}}"></i>
+            <div>[[item.title]]</div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </template>
+  <script src="sm-navbar.js"></script>
+</dom-module>

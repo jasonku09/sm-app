@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="sm-appointments-card">
+  <link rel="import" type="css" href="sm-appointments-card.css" />
+  <template>
+    <paper-material elevation="3">
+      <div class="title">Today's Appointments</div>
+      <template is="dom-repeat" items="[[appointments]]" as="appointment">
+        <div class="appointment-item">
+          <i class$="[[appointment.icon]]"></i>
+          <div>
+            <div class="header">[[appointment.time]]</div>
+            <div>[[appointment.client]]</div>
+            <div>[[appointment.subject]]</div>
+          </div>
+        </div>
+      </template>
+    </paper-material>
+  </template>
+  <script>
+    Polymer({
+      is: 'sm-appointments-card',
+
+      properties: {
+        appointments: {
+          type: Array,
+          value: [
+            {
+              time: '2:00pm to 3:00pm',
+              client: 'Mark Hamberger',
+              subject: 'Calculus',
+              icon: 'fa fa-2x fa-calculator'
+            },
+            {
+              time: '3:30pm to 4:00pm',
+              client: 'Zenon Questerson',
+              subject: 'SAT/ACT',
+              icon: 'fa fa-2x fa-book'
+            },
+            {
+              time: '4:30pm to 5:00pm',
+              client: 'Jason Too Cool',
+              subject: 'Basic Algebra',
+              icon: 'fa fa-2x fa-calculator'
+            },
+            {
+              time: '5:30pm to 7:00pm',
+              client: 'Stephen Curry',
+              subject: 'Poetry',
+              icon: 'fa fa-2x fa-book'
+            }
+          ]
+        }
+      }
+
+    });
+  </script>
+</dom-module>

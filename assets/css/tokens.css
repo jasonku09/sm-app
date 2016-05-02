@@ -1,0 +1,15 @@
+:host{
+  --brandColorPrimary: #FFC263;
+  --brandColorSecondary: lightblue;
+  --fontSizeSmall: 14px;
+  --fontSizeMedium: 1rem;
+  --fontSizeLarge: 1.5rem;
+  --marginSmall: 0.5rem;
+  --marginMedium: 1rem;
+  --paddingTiny: 0.5rem;
+  --paddingSmall: 1rem;
+  --paddingMedium: 2rem;
+  --paddingLarge: 3rem;
+  --borderRadiusSmall: 0.5rem;
+  --textDisabled: #A5A5A5;
+}

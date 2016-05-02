@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="login-page">
+  <link rel="import" type="css" href="login-page.css">
+  <template>
+    <div class="main">
+      <paper-material id="loginCard"
+                      class="login-card"
+                      elevtion="0"
+                      animated="true">
+        <div class="cardContent">
+          <div class="title">Schedule.ME</div>
+          <paper-input label="email"></paper-input>
+          <paper-input label="password"></paper-input>
+          <div class="button-group">
+            <paper-button raised class="login-button" on-tap="onLoginClick">Login</paper-button>
+            <paper-button>Signup</paper-button>
+          </div>
+        </div>
+      </paper-material>
+    </div>
+  </template>
+  <script src="login-page.js"></script>
+</dom-module>
