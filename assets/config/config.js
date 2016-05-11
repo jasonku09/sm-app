@@ -9,8 +9,9 @@ var smAppConfig = {
       icon: 'user'
     },
     {
-      title: 'Calendar',
-      icon: 'calendar'
+      title: 'Scheduler',
+      icon: 'calendar',
+      navLocation: 'scheduler'
     },
     {
       title: 'Settings',

@@ -1,0 +1,32 @@
+.day{
+  font-weight: var(--fontWeightBold);
+  margin-bottom: var(--marginLarge);
+}
+
+.grid{
+  display:flex;
+  flex-direction:column;
+  width: 250px;
+}
+
+.grid-item{
+  height: 30px;
+  font-size: var(--fontSizeSmall);
+}
+
+.grid-item:nth-child(even){
+  border-bottom: var(--borderBottomLight);
+}
+.grid-item:nth-child(odd){
+  border-bottom: var(--borderBottomSuperLight);
+}
+
+.grid-item:hover{
+  border-bottom: var(--borderBottomHighlight);
+  background-color: #D9E9EF;
+}
+
+.selected-grid-outline{
+  position: absolute;
+  background-color: lightgreen;
+}

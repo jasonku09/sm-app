@@ -1,0 +1,13 @@
+<link rel="import" href="day-selector.html">
+
+<dom-module id="calendar-selector">
+  <link rel="import" type="css" href="calendar-selector.css"/>
+  <template>
+    <paper-material class="calendar-container" elevation="3">
+      <template is="dom-repeat" items="[[days]]">
+        <day-selector day="[[item]]"></day-selector>
+      </template>
+    </paper-material>
+  </template>
+  <script src="calendar-selector.js"></script>
+</dom-module>

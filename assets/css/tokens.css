@@ -6,10 +6,16 @@
   --fontSizeLarge: 1.5rem;
   --marginSmall: 0.5rem;
   --marginMedium: 1rem;
+  --marginLarge: 2rem;
   --paddingTiny: 0.5rem;
   --paddingSmall: 1rem;
   --paddingMedium: 2rem;
   --paddingLarge: 3rem;
   --borderRadiusSmall: 0.5rem;
+  --borderRadiusMedium: 1rem;
   --textDisabled: #A5A5A5;
+  --fontWeightBold: 900;
+  --borderBottomLight: 1px solid lightgrey;
+  --borderBottomSuperLight:1px solid #ECEBEB;
+  --borderBottomHighlight: 1px solid lightblue;
 }

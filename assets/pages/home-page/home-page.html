@@ -5,15 +5,21 @@
 <link rel="import" href="../../components/sm-navbar/sm-navbar.html">
 <link rel="import" href="../../components/sm-appointments-card/sm-appointments-card.html">
 
+<link rel="import" href="../scheduler-page/scheduler-page.html">
+
 <dom-module id="home-page">
   <link rel="import" type="css" href="home-page.css"/>
   <template>
     <div class="main">
-      <sm-navbar></sm-navbar>
+      <sm-navbar router="[[router]]"></sm-navbar>
       <paper-header-panel>
         <paper-toolbar></paper-toolbar>
         <div class="mainContent">
-          <sm-appointments-card></sm-appointments-card>
+          <wxy-router key="main">
+            <wxy-route path="/scheduler"
+                       name="scheduler-page"></wxy-route>
+          </wxy-router>
+          <!-- <sm-appointments-card></sm-appointments-card> -->
         </div>
       </paper-header-panel>
     </div>

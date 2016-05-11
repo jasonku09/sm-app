@@ -1,0 +1,12 @@
+<dom-module id="day-selector">
+  <link rel="import" type="css" href="day-selector.css"/>
+  <template>
+    <div class="day">[[day]]</div>
+    <div id="grid" class="grid">
+      <template id="gridRepeat" is="dom-repeat" items="[[fullTimeGrid]]" as="time">
+        <div class="grid-item" on-tap="onGridItemTap">[[getFormattedTime(time)]]</div>
+      </template>
+    </div>
+  </template>
+  <script src="day-selector.js"></script>
+</dom-module>

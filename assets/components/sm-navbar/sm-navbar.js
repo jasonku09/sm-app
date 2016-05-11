@@ -19,6 +19,7 @@ Polymer({
     this.closeDrawer();
     this.menuItems = smAppConfig.navbarItems;
     var self = this;
+    this.router.go('/scheduler');
     setTimeout(function(){
       self.toggleOpen();
     }, 900);
@@ -44,6 +45,12 @@ Polymer({
 
   getIconClass: function(icon){
     return 'fa fa-' + icon;
+  },
+
+  onMenuItemTap: function(event){
+    var selectedItem = this.$.menuItemsRepeat.itemForElement(event.target);
+    if(!selectedItem || !selectedItem.navLocation){ return; }
+    this.router.go('/' + selectedItem.navLocation);
   }
 
 });

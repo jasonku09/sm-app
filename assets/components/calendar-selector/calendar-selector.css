@@ -1,0 +1,12 @@
+.calendar-container{
+  display:flex;
+  flex-grow: 1;
+  border-radius: var(--borderRadiusMedium);
+  background-color: white;
+  flex-direction:row;
+  padding: var(--paddingMedium);
+  overflow-y: scroll;
+  position:absolute;
+  top: var(--paddingMedium);
+  bottom: var(--paddingMedium);
+}
