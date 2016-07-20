@@ -1,0 +1,27 @@
+<link rel="import" href="teacher-controller.html">
+
+<dom-module id="main-controller">
+  <template>
+    <teacher-controller id="teacherController" base-url="[[baseUrl]]"></teacher-controller>
+    <student-controller id="studentController" base-url="[[baseUrl]]"></student-controller>
+  </template>
+  <script>
+    Polymer({
+      is: 'main-controller',
+
+      properties: {
+        baseUrl: {
+          type: String,
+          value: "http://hlcschedule.herokuapp.com/scheduler/api"
+        }
+      },
+
+      getControllers: function(){
+        return{
+          teacherController: this.$.teacherController,
+          studentController: this.$.studentController
+        }
+      }
+    });
+  </script>
+</dom-module>

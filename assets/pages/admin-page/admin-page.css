@@ -1,0 +1,50 @@
+#teacherContainer{
+  position: absolute;
+  min-height: 100px;
+  top:var(--marginMedium);
+  bottom:var(--marginMedium);
+  left:var(--marginMedium);
+  right:var(--marginMedium);
+  overflow:auto;
+  transition: all 1s ease;
+}
+#skillsContainer{
+  height:0px;
+  opacity: 0;
+  position:absolute;
+  top:var(--marginMedium);
+  right:var(--marginMedium);
+  left: 80%;
+  transition: all 1s ease;
+}
+paper-material{
+  border-radius: var(--borderRadiusSmall);
+  background-color: white;
+  padding: var(--paddingSmall);
+
+}
+.listItem{
+  padding: var(--paddingTiny);
+}
+.listItem:hover{
+  background-color: var(--defaultHoverColor);
+  cursor: pointer;
+}
+#addTeacherFab{
+  position:absolute;
+  top: 25px;
+  right: 25px;
+}
+#addSkillFab{
+  position:absolute;
+  top: 25px;
+  right:25px;
+}
+paper-spinner{
+  position:absolute;
+  left: 50%;
+  top: 50%;
+}
+.active{
+  background-color: var(--defaultHoverColor);
+}

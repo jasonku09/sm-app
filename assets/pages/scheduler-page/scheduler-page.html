@@ -2,13 +2,58 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="scheduler-page">
+  <link rel="import" type="css" href="scheduler-page.css" />
   <template>
-    <calendar-selector></calendar-selector>
+    <div class="main">
+      <template is="dom-repeat" items="[[timesArray]]">
+        <div>
+          <h5>[[item.day]]</h5>
+          <p>[[item.startTime]] - [[item.endTime]]</p>
+        </div>
+      </template>
+      <calendar-selector></calendar-selector>
+    </div>
 
   </template>
   <script>
     Polymer({
       is: 'scheduler-page',
+
+      properties: {
+        selectedTimes: {
+          type: Object
+        }
+      },
+
+      attached: function(){
+        var self = this;
+        this.selectedTimes = {};
+        document.querySelector('scheduler-page').addEventListener('timeChanged', this._handleTimeChanged.bind(self));
+      },
+
+      _handleTimeChanged: function(e){
+        if (!this.selectedTimes[e.detail.day]){
+          this.selectedTimes[e.detail.day] = {};
+        }
+        if(!e.detail.startTime){
+          delete this.selectedTimes[e.detail.day];
+        }
+        else{
+          this.selectedTimes[e.detail.day] = {
+            day: e.detail.day,
+            startTime: moment(e.detail.startTime).format('h mm a'),
+            endTime: moment(e.detail.endTime).format('h mm a')
+          }
+        }
+
+        var scheduled = [];
+        for (var property in this.selectedTimes) {
+            if (this.selectedTimes.hasOwnProperty(property)) {
+                scheduled.push(this.selectedTimes[property]);
+            }
+        }
+        this.timesArray = scheduled;
+      }
 
     });
   </script>

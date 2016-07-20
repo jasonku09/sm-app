@@ -29,3 +29,6 @@ paper-icon-button{
   -webkit-transition: opacity 0.5s ease;
   opacity: 0;
 }
+.active{
+  color: white;
+}

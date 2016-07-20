@@ -1,0 +1,40 @@
+<link rel="import" href="../../controllers/main-controller.html">
+<dom-module id="admin-page">
+  <link rel="import" type="css" href="admin-page.css"/>
+  <link rel="import" type="css" href="../../css/shared.css" />
+  <template>
+    <main-controller id="mainController"></main-controller>
+    <paper-material id="teacherContainer" elevation="2">
+      <div class="title">Teachers</div>
+      <template id="teacherRepeat" is="dom-repeat" items="[[teachers]]" as="teacher">
+        <div on-tap="onTeacherTap" class$="listItem {{isActive(selectedTeacher, teacher)}}">
+          [[teacher.nickname]]
+        </div>
+      </template>
+      <paper-fab id="addTeacherFab" on-tap="onAddTap" icon="add"></paper-fab>
+      <div id="spinner">
+        <paper-spinner active></paper-spinner>
+      </div>
+
+    <paper-toast id="toast"
+                 text="[[toastMessage]]"
+                 duration="2000"></paper-toast>
+    </paper-material>
+
+    <paper-material id="skillsContainer" elevation="2">
+      <div>Skills</div>
+      <paper-fab id="addSkillFab" mini icon="add"></paper-fab>
+    </paper-material>
+
+    <paper-dialog id="addTeacherDialog" always-on-top="true" with-backdrop="true">
+      <h2>New Teacher</h2>
+      <paper-input label="Name" value="{{newTeacherName}}"></paper-input>
+      <div class="buttons">
+        <paper-button class="dismiss-button" dialog-dismiss>Cancel</paper-button>
+        <paper-button class="confirm-button" dialog-confirm on-tap="onConfirmTap">Accept</paper-button>
+      </div>
+    </paper-dialog>
+
+  </template>
+  <script src="admin-page.js"></script>
+</dom-module>

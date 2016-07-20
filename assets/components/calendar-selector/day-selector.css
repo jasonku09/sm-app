@@ -6,7 +6,7 @@
 .grid{
   display:flex;
   flex-direction:column;
-  width: 250px;
+  width: 175px;
 }
 
 .grid-item{
@@ -23,7 +23,7 @@
 
 .grid-item:hover{
   border-bottom: var(--borderBottomHighlight);
-  background-color: #D9E9EF;
+  background-color: #E4EEF1;
 }
 
 .selected-grid-outline{

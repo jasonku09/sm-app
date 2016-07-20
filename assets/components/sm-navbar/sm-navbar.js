@@ -19,10 +19,10 @@ Polymer({
     this.closeDrawer();
     this.menuItems = smAppConfig.navbarItems;
     var self = this;
-    this.router.go('/scheduler');
     setTimeout(function(){
       self.toggleOpen();
     }, 900);
+    this.selectMenuItem('admin')
   },
 
   toggleOpen: function(){
@@ -50,7 +50,19 @@ Polymer({
   onMenuItemTap: function(event){
     var selectedItem = this.$.menuItemsRepeat.itemForElement(event.target);
     if(!selectedItem || !selectedItem.navLocation){ return; }
-    this.router.go('/' + selectedItem.navLocation);
+    this.selectMenuItem(selectedItem.navLocation);
+  },
+
+  selectMenuItem: function(item){
+    this.activeItem = item;
+    this.router.go('/' + item);
+  },
+
+  isActive: function(activeItem, item){
+    if(item.navLocation === activeItem){
+      return 'active';
+    }
+    return '';
   }
 
 });

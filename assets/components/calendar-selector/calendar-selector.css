@@ -1,6 +1,6 @@
 .calendar-container{
   display:flex;
-  flex-grow: 1;
+  width: 75%;
   border-radius: var(--borderRadiusMedium);
   background-color: white;
   flex-direction:row;
@@ -9,4 +9,5 @@
   position:absolute;
   top: var(--paddingMedium);
   bottom: var(--paddingMedium);
+  right:0;
 }

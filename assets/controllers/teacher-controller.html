@@ -1,0 +1,32 @@
+<dom-module id="teacher-controller">
+  <script>
+    Polymer({
+      is: 'teacher-controller',
+
+      properties: {
+        baseUrl: {
+          type: String
+        }
+      },
+
+      get: function(){
+        if(this.baseUrl === null){ return; }
+        return $.ajax({
+          url: this.baseUrl + '/teacher',
+          type: "GET"
+        })
+      },
+
+      create: function(name){
+        if(!this.baseUrl){ return; }
+
+        return $.ajax({
+          url: this.baseUrl + '/teacher/',
+          type: "POST",
+          data: { "nickname" : name}
+        })
+      }
+
+    });
+  </script>
+</dom-module>

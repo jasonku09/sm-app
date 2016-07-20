@@ -5,8 +5,9 @@ var smAppConfig = {
       icon: 'tachometer'
     },
     {
-      title: 'Account',
-      icon: 'user'
+      title: 'Admin',
+      icon: 'user',
+      navLocation: 'admin'
     },
     {
       title: 'Scheduler',

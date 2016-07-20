@@ -8,7 +8,7 @@
       <paper-icon-button icon="menu" on-tap="toggleOpen"></paper-icon-button>
       <div class="menuBody">
         <template id="menuItemsRepeat" is="dom-repeat" items="[[menuItems]]">
-          <div class$="menuItem {{isActive(item)}}" on-tap="onMenuItemTap">
+          <div class$="menuItem {{isActive(activeItem, item)}}" on-tap="onMenuItemTap">
             <i class$="{{getIconClass(item.icon)}}"></i>
             <div>[[item.title]]</div>
           </div>

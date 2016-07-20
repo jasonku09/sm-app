@@ -6,6 +6,7 @@
 <link rel="import" href="../../components/sm-appointments-card/sm-appointments-card.html">
 
 <link rel="import" href="../scheduler-page/scheduler-page.html">
+<link rel="import" href="../admin-page/admin-page.html" />
 
 <dom-module id="home-page">
   <link rel="import" type="css" href="home-page.css"/>
@@ -15,9 +16,11 @@
       <paper-header-panel>
         <paper-toolbar></paper-toolbar>
         <div class="mainContent">
-          <wxy-router key="main">
+          <wxy-router key="test">
             <wxy-route path="/scheduler"
                        name="scheduler-page"></wxy-route>
+            <wxy-route path="/admin"
+                       name="admin-page"></wxy-route>
           </wxy-router>
           <!-- <sm-appointments-card></sm-appointments-card> -->
         </div>

@@ -2,15 +2,23 @@
 <link rel="import" href="../../bower_components/wxy-router/wxy-router.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../bower_components/google-signin/google-signin.html">
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
 
 <link rel="import" href="../../pages/login-page/login-page.html">
 <link rel="import" href="../../pages/home-page/home-page.html">
+<link rel="import" href="../modal-manager/modal-manager.html">
 
 <dom-module id="scheduleme-app">
   <link rel="import" type="css" href="../../css/tokens.css" />
-  <link rel="import" type="css" href="../../shared/shared.css">
+  <link rel="import" type="css" href="../../css/shared.css">
   <link rel="import" type="css" href="scheduleme-app.css" />
+
   <template>
+    <modal-manager id="modalManager"></modal-manager>
+
     <div class='main'>
       <wxy-router key="main">
         <wxy-route path="/"
@@ -26,10 +34,18 @@
     Polymer({
       is: 'scheduleme-app',
 
+      listeners: {
+        'showPanel': 'handleShowPanel'
+      },
+
       created: function(){
         var appPath = document.location.pathname;
 
-        window.location.href = appPath + "#/home";
+        window.location.href = appPath + "#/login";
+      },
+
+      handleShowPanel: function(event){
+        this.$.modalManager.handle(event);
       }
 
     });
