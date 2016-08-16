@@ -1,40 +1,47 @@
+<link rel="import" href="../../components/teacher-container/teacher-container.html">
 <link rel="import" href="../../controllers/main-controller.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
 <dom-module id="admin-page">
   <link rel="import" type="css" href="admin-page.css"/>
   <link rel="import" type="css" href="../../css/shared.css" />
   <template>
     <main-controller id="mainController"></main-controller>
-    <paper-material id="teacherContainer" elevation="2">
-      <div class="title">Teachers</div>
-      <template id="teacherRepeat" is="dom-repeat" items="[[teachers]]" as="teacher">
-        <div on-tap="onTeacherTap" class$="listItem {{isActive(selectedTeacher, teacher)}}">
-          [[teacher.nickname]]
+    <div class="mainContainer">
+
+      <paper-material id="teacherContainer" elevation="2">
+        <teacher-container selected-teacher="{{selectedTeacher}}"></teacher-container>
+      </paper-material>
+
+      <paper-material id="skillsContainer" elevation="2">
+        <div class="titleBar">
+          <div>Skills</div>
+          <paper-button class="confirm-button" on-click="onAddClick">
+            <iron-icon icon="add"></iron-icon>
+            <span>Add</span>
+          </paper-button>
         </div>
-      </template>
-      <paper-fab id="addTeacherFab" on-tap="onAddTap" icon="add"></paper-fab>
-      <div id="spinner">
-        <paper-spinner active></paper-spinner>
-      </div>
+        <template is="dom-if" if="{{isEmpty(selectedTeacherSkills)}}">
+          <div class="helptext">Click '+' to add some skills</div>
+        </template>
+        <template is="dom-repeat" items="[[selectedTeacherSkills]]">
+          <template is="dom-if" if="[[item.hasSkill]]">
+            <div>[[item.name]]</div>
+          </template>
+        </template>
+      </paper-material>
 
-    <paper-toast id="toast"
-                 text="[[toastMessage]]"
-                 duration="2000"></paper-toast>
-    </paper-material>
-
-    <paper-material id="skillsContainer" elevation="2">
-      <div>Skills</div>
-      <paper-fab id="addSkillFab" mini icon="add"></paper-fab>
-    </paper-material>
-
-    <paper-dialog id="addTeacherDialog" always-on-top="true" with-backdrop="true">
-      <h2>New Teacher</h2>
-      <paper-input label="Name" value="{{newTeacherName}}"></paper-input>
-      <div class="buttons">
-        <paper-button class="dismiss-button" dialog-dismiss>Cancel</paper-button>
-        <paper-button class="confirm-button" dialog-confirm on-tap="onConfirmTap">Accept</paper-button>
-      </div>
-    </paper-dialog>
-
+      <paper-dialog id="addSkillsDialog" always-on-top="true" with-backdrop="true">
+        <h2>Add Skills</h2>
+        <template id="addSkillsRepeat" is="dom-repeat" items="{{selectedTeacherSkills}}">
+          <paper-checkbox checked="{{item.hasSkill}}">[[item.name]]</paper-checkbox>
+        </template>
+        <div class="buttons">
+          <paper-button class="dismiss-button" dialog-dismiss>Cancel</paper-button>
+          <paper-button class="confirm-button" dialog-confirm on-click="onSkillsConfirmTap">Accept</paper-button>
+        </div>
+      </paper-dialog>
+    </div>
   </template>
   <script src="admin-page.js"></script>
 </dom-module>

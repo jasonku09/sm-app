@@ -2,6 +2,7 @@ Polymer({
   is: 'login-page',
 
   attached: function(){
+    this.router.go('/home');
     var self = this;
     $('#loginCard').css("opacity", 0)
     $('.cardContent').css("opacity", 0)

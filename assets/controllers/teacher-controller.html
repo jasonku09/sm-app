@@ -17,13 +17,49 @@
         })
       },
 
-      create: function(name){
+      create: function(name, callback){
         if(!this.baseUrl){ return; }
-
-        return $.ajax({
+        var self = this;
+        $.ajax({
           url: this.baseUrl + '/teacher/',
           type: "POST",
           data: { "nickname" : name}
+        }).done(function(result){
+          $.ajax({
+            url: self.baseUrl + '/skill/',
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({ "teacher": result.teacher_id}),
+            success: callback
+          })
+        })
+      },
+
+      delete: function(id, callback){
+        if(!this.baseUrl){return;}
+        $.ajax({
+          url: this.baseUrl + '/teacher/' + id + '/',
+          type: "DELETE",
+          contentType: 'application/json',
+          success: callback
+        })
+      },
+
+      getSkillsById: function(id){
+        if(!this.baseUrl){return;}
+        return $.ajax({
+          url: this.baseUrl + '/teacher/' + id + '/skill/',
+          type: "GET"
+        })
+      },
+
+      updateSkills: function(id, skillsObject){
+        if(!this.baseUrl){return;}
+        return $.ajax({
+          url: this.baseUrl + '/teacher/' + id + '/skill/',
+          type: "POST",
+          contentType: 'application/json',
+          data: JSON.stringify(skillsObject)
         })
       }
 

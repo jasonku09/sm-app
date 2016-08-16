@@ -9,3 +9,40 @@
   color: var(--brandColorPrimary);
   background-color: white;
 }
+paper-button > *{
+  vertical-align: middle;
+  text-transform: none;
+  text-align: start;
+}
+paper-button{
+  padding: var(--paddingTiniest);
+}
+paper-icon-button{
+  padding: 0;
+  color: grey;
+}
+iron-icon{
+  color: grey;
+}
+paper-fab{
+  background-color: var(--brandColorPrimary);
+}
+.titleBar{
+  display: flex;
+  justify-content: space-between;
+  padding: var(--paddingTiny);
+}
+.titleBar iron-icon{
+  color: white;
+}
+paper-dialog{
+  padding: var(--paddingTiny);
+}
+paper-dialog .buttons{
+  padding: var(--paddingMedium);
+}
+.helptext{
+  color: grey;
+  font-style:italic;
+  font-size: var(--fontSizeSmall);
+}

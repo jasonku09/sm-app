@@ -1,3 +1,6 @@
+:host{
+  --paper-checkbox-checked-color: var(--brandColorPrimary);
+}
 #teacherContainer{
   position: absolute;
   min-height: 100px;
@@ -14,7 +17,7 @@
   position:absolute;
   top:var(--marginMedium);
   right:var(--marginMedium);
-  left: 80%;
+  left: 77%;
   transition: all 1s ease;
 }
 paper-material{
@@ -23,24 +26,6 @@ paper-material{
   padding: var(--paddingSmall);
 
 }
-.listItem{
-  padding: var(--paddingTiny);
-}
-.listItem:hover{
-  background-color: var(--defaultHoverColor);
-  cursor: pointer;
-}
-paper-fab{
-  position:absolute;
-  top: 25px;
-  right: 25px;
-  background-color: var(--brandColorPrimary);
-}
-paper-spinner{
-  position:absolute;
-  left: 50%;
-  top: 50%;
-}
-.active{
-  background-color: var(--defaultHoverColor);
+#addSkillsDialog paper-checkbox{
+  display: block;
 }

@@ -9,7 +9,7 @@
     <div class="main">
       <paper-material id="loginCard"
                       class="login-card"
-                      elevtion="0"
+                      elevation="0"
                       animated="true">
         <div class="cardContent">
           <div class="title">Schedule.ME</div>
@@ -17,8 +17,9 @@
           <paper-input label="password"></paper-input>
           <div class="button-group">
             <google-signin label-signin="Sign-in"
-                           client-id="323423619559-orlpuuiaalb7sp3ooblt4mjmp32ffq1t.apps.googleusercontent.com"
-                           scopes="https://www.googleapis.com/auth/calendar"></google-signin>
+                           client-id="683335391901-n7s2cn4irrpavevnu0i2p5fv6j9jni1e.apps.googleusercontent.com"
+                           scopes="https://www.googleapis.com/auth/calendar"
+                           signed-in="{{userLoggedIn}}"></google-signin>
             <paper-button raised class="login-button" on-tap="onLoginClick">Login</paper-button>
             <paper-button>Signup</paper-button>
           </div>

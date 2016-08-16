@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../controllers/main-controller.html">
+
+<dom-module id="teacher-container">
+  <link rel="import" type="css" href="teacher-container.css" />
+  <link rel="import" type="css" href="../../css/shared.css" />
+  <template>
+    <main-controller id="mainController"></main-controller>
+
+    <!-- Title Bar -->
+    <div class="titleBar">
+      <span class="title">Teachers</span>
+      <paper-button class="confirm-button" on-tap="onAddTap">
+        <iron-icon icon="add"></iron-icon>
+        <span>Add</span></paper-button>
+    </div>
+
+    <!-- Teacher List -->
+    <template id="teacherRepeat" is="dom-repeat" items="[[teachers]]" as="teacher">
+      <div on-click="onTeacherTap" class$="listItem {{isActive(selectedTeacher, teacher)}}">
+        <span>[[teacher.nickname]]</span>
+        <paper-icon-button class="menuButton" icon="more-vert" on-click="onMenuTap"></paper-icon-button>
+      </div>
+    </template>
+
+    <div id="spinner">
+      <paper-spinner active></paper-spinner>
+    </div>
+
+    <paper-dialog id="addTeacherDialog" always-on-top="true" with-backdrop="true">
+      <h2>New Teacher</h2>
+      <paper-input label="Name" value="{{newTeacherName}}"></paper-input>
+      <div class="buttons">
+        <paper-button class="dismiss-button" dialog-dismiss>Cancel</paper-button>
+        <paper-button class="confirm-button" dialog-confirm on-tap="onConfirmTap">Accept</paper-button>
+      </div>
+    </paper-dialog>
+
+    <paper-material id="menuContainer" elevation="2">
+      <paper-button>
+        <iron-icon icon="create"></iron-icon>
+        <span>Edit</span>
+      </paper-button>
+      <paper-button>
+        <iron-icon icon="schedule"></iron-icon>
+        <span>Scheduler</span>
+      </paper-button>
+      <paper-button on-tap="onDeleteTap">
+        <iron-icon icon="delete"></iron-icon>
+        <span>Delete</span>
+      </paper-button>
+    </paper-material>
+
+    <paper-toast id="toast"
+                 text="[[toastMessage]]"
+                 duration="2000"></paper-toast>
+    </paper-material>
+  </template>
+  <script src="teacher-container.js"></script>
+</dom-module>

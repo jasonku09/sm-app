@@ -1,60 +1,62 @@
 Polymer({
   is: 'admin-page',
 
+  properties: {
+    selectedTeacher: {
+      type: Object,
+      observer: '_onSelectedTeacherChange'
+    }
+  },
+
   attached: function(){
     this.controller = this.$.mainController.getControllers();
-    this.init();
   },
 
-  init: function(){
-    this.getTeachers();
-  },
-
-  onAddTap: function(){
-    this.$.addTeacherDialog.open();
-    //this.fire('showPanel', {title: 'New Teacher', body: this.$.addTeacherDialogBody});
-  },
-
-  onConfirmTap: function(){
-    this.$.spinner.style.opacity = 1;
-    var self = this
-    this.controller.teacherController.create(this.newTeacherName).done(
-      function(result){
-        self.$.spinner.style.opacity = 0;
-        self.toastMessage = "Teacher '" + self.newTeacherName + "' was created successfully";
-        self.$.toast.center();
-        self.$.toast.open();
-        self.newTeacherName = "";
-        self.getTeachers();
-      }
-    );
-  },
-
-  getTeachers: function(){
-    this.$.spinner.style.opacity = 1;
+  _onSelectedTeacherChange: function(){
     var self = this;
-    this.controller.teacherController.get().done(
-      function(result){
-      self.teachers = result;
-      self.fire();
-      self.$.spinner.style.opacity = 0
-    });
-  },
-
-  onTeacherTap: function(event){
-    this.selectedTeacher = this.$.teacherRepeat.itemForElement(event.target).teacher_id;
-    $('#teacherContainer').css('right', '25%');
-    var skillsContainer = $('#skillsContainer');
-    setTimeout(function(){
-      skillsContainer.css('height', '100px');
-      skillsContainer.css('opacity', 1);
-    }, 1000)
-  },
-
-  isActive: function(selectedTeacher, item){
-    if(item.teacher_id === selectedTeacher){
-      return 'active';
+    if(this.selectedTeacher){
+      this.availableSkills = smAppConfig.teacherSkills;
+      this.controller.teacherController.getSkillsById(this.selectedTeacher.teacher_id).done(
+        function(response){
+          if(response){
+            self.processSkills(response);
+          }
+        })
     }
-    return '';
+  },
+
+  processSkills: function(response){
+    var availableSkills = smAppConfig.teacherSkills,
+        skillsArray     = [];
+    for(var i = 0; i < availableSkills.length; i++){
+      skillsArray.push({
+        name: availableSkills[i],
+        hasSkill: response["skill_" + (i + 1)]
+      });
+    }
+    this.selectedTeacherSkills = skillsArray;
+  },
+
+  onAddClick: function(){
+    this.$.addSkillsDialog.open();
+  },
+
+  isEmpty: function(){
+    return this.selectedTeacherSkills.length === 0;
+  },
+
+  _getSkillsForUpdate: function(){
+    if(!this.selectedTeacherSkills) { return;}
+    var processed = {};
+    for(var i = 0; i < this.selectedTeacherSkills.length; i++){
+      processed["skill_" + (i + 1)] = this.selectedTeacherSkills[i].hasSkill;
+    }
+    return processed;
+  },
+
+  onSkillsConfirmTap: function(){
+    this.controller.teacherController.updateSkills(this.selectedTeacher.teacher_id, this._getSkillsForUpdate()).done(function(){
+      alert('yay');
+    })
   }
 });

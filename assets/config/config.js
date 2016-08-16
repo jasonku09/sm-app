@@ -18,5 +18,23 @@ var smAppConfig = {
       title: 'Settings',
       icon: 'gear'
     }
+  ],
+
+  teacherSkills: [
+    "ACT - English",
+    "ACT - Math",
+    "ACT - Reading",
+    "ACT - Science",
+    "ACT - Writing",
+    "Floor - ELA",
+    "Floor - Math",
+    "Pre-Calculus",
+    "Calculus",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Earth/Space",
+    "History",
+    "Spanish"
   ]
 }

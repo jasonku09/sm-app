@@ -1,0 +1,36 @@
+.listItem{
+  padding: var(--paddingTiny);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listItem:hover{
+  background-color: var(--defaultHoverColor);
+  cursor: pointer;
+}
+paper-fab{
+  position:absolute;
+  top: 25px;
+  right: 25px;
+  background-color: var(--brandColorPrimary);
+}
+paper-spinner{
+  position:absolute;
+  left: 50%;
+  top: 50%;
+}
+.active{
+  background-color: var(--defaultHoverColor);
+}
+#menuContainer{
+  position:absolute;
+  border: var(--borderBottomLight);
+  border-radius: var(--borderRadiusSmall);
+  background-color: white;
+  max-width: 100%;
+  display:none;
+  flex-direction: column;
+}
+#menuContainer paper-button{
+  padding: var(--paddingSmall);
+}
